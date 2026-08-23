@@ -20,10 +20,6 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    setMenuOuvert(false);
-  }, [pathname]);
-
-  useEffect(() => {
     document.body.style.overflow = menuOuvert ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -96,7 +92,10 @@ export default function Header() {
         </div>
       </header>
 
-      <FullscreenMenu ouvert={menuOuvert} />
+      <FullscreenMenu
+        ouvert={menuOuvert}
+        onNavigate={() => setMenuOuvert(false)}
+      />
     </>
   );
 }

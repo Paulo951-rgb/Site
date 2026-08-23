@@ -1,14 +1,5 @@
-import dynamic from "next/dynamic";
 import { siteConfig } from "@/content/siteConfig";
-
-const MapLeaflet = dynamic(() => import("./MapLeaflet"), {
-  ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 flex items-center justify-center bg-gris-chaud/50 text-xs uppercase tracking-surtitre text-taupe">
-      Chargement de la carte…
-    </div>
-  ),
-});
+import MapLeaflet from "./MapLeaflet";
 
 /**
  * Carte de localisation, respectueuse des licences :

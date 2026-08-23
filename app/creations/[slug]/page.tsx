@@ -12,12 +12,13 @@ export function generateStaticParams() {
   return creations.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const creation = getCreationParSlug(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const creation = getCreationParSlug(slug);
   if (!creation) return construireMetadata({ titre: "Création" });
 
   return construireMetadata({
@@ -27,12 +28,13 @@ export function generateMetadata({
   });
 }
 
-export default function CreationPage({
+export default async function CreationPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const creation = getCreationParSlug(params.slug);
+  const { slug } = await params;
+  const creation = getCreationParSlug(slug);
   if (!creation) notFound();
 
   const autres = creations

@@ -6,7 +6,7 @@ Ce n'est ni un site e-commerce, ni un site vitrine générique : aucun prix, auc
 
 ## Stack
 
-- **Next.js 14** (App Router) + **TypeScript strict**
+- **Next.js 16** (App Router) + **TypeScript strict**
 - **Tailwind CSS** avec tokens de design personnalisés (aucune couleur par défaut)
 - **Framer Motion** (animations sobres, respect strict de `prefers-reduced-motion`)
 - **next/font** self-hosté (Fraunces + Inter), **next/image** (WebP/AVIF)

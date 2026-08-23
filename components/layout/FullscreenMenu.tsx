@@ -5,7 +5,13 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { navigationPrincipale } from "@/content/navigation";
 import { siteConfig } from "@/content/siteConfig";
 
-export default function FullscreenMenu({ ouvert }: { ouvert: boolean }) {
+export default function FullscreenMenu({
+  ouvert,
+  onNavigate,
+}: {
+  ouvert: boolean;
+  onNavigate: () => void;
+}) {
   const reduit = useReducedMotion();
 
   return (
@@ -39,6 +45,7 @@ export default function FullscreenMenu({ ouvert }: { ouvert: boolean }) {
               >
                 <Link
                   href={lien.href}
+                  onClick={onNavigate}
                   className="block border-b border-ivoire/10 py-3 font-serif text-4xl transition-colors duration-300 hover:text-taupe md:text-5xl"
                 >
                   {lien.label}
@@ -55,6 +62,7 @@ export default function FullscreenMenu({ ouvert }: { ouvert: boolean }) {
           >
             <Link
               href="/contact"
+              onClick={onNavigate}
               className="inline-block border border-ivoire/40 px-8 py-4 text-sm uppercase tracking-surtitre transition-colors duration-300 hover:border-ivoire hover:bg-ivoire hover:text-noir"
             >
               Prendre rendez-vous
