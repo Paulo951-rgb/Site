@@ -28,7 +28,11 @@ Production :
 npm run build && npm start
 ```
 
-Déploiement cible : **Vercel** (compatible Netlify / Cloudflare Pages, aucune dépendance propriétaire forte).
+Déploiement cible : **Vercel** (compatible Netlify / Cloudflare Pages, aucune dépendance propriétaire forte). Aucune configuration spécifique n'est requise : importer le dépôt, renseigner les variables d'environnement (voir `.env.example`), déployer.
+
+## État du projet
+
+Build de production vérifié : 27 routes générées (12 pages + 9 fiches créations + sitemap/robots/icônes + API contact). Parcours testés dans le navigateur : accueil, créations, fiche création, atelier (carte), contact. API contact testée : validation (422), honeypot (succès silencieux), rate limiting (429), envoi gracieux sans clé (502 avec message de repli). Balayage automatisé : aucun vocabulaire interdit (prix, panier, promo, stock…) sur aucune page.
 
 ## Modifier le contenu sans toucher au code
 
