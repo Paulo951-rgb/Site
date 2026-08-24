@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blurData } from "@/content/blurData";
 
 /**
  * Panneau image éditorial : ratio maîtrisé, zoom léger au hover sur les
@@ -21,6 +22,8 @@ export default function ImagePanel({
   sizes?: string;
   className?: string;
 }) {
+  const flou = blurData[src];
+
   return (
     <div className={`relative overflow-hidden bg-gris-chaud ${ratio} ${className}`}>
       <Image
@@ -29,6 +32,8 @@ export default function ImagePanel({
         fill
         priority={priorite}
         sizes={sizes}
+        placeholder={flou ? "blur" : "empty"}
+        blurDataURL={flou}
         className={`object-cover transition-transform duration-500 ease-doux ${
           zoomHover ? "group-hover:scale-[1.03]" : ""
         }`}

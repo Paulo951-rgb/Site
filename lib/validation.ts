@@ -40,6 +40,47 @@ export const contactSchema = z.object({
 
 export type ContactInput = z.infer<typeof contactSchema>;
 
+// Pièces jointes du formulaire (photos d'une pièce à restaurer, etc.)
+export const FICHIERS_MAX = 3;
+export const FICHIER_TAILLE_MAX = 4 * 1024 * 1024; // 4 Mo par fichier
+export const TYPES_FICHIERS_ACCEPTES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+];
+export const ACCEPT_FICHIERS = TYPES_FICHIERS_ACCEPTES.join(",");
+
+export interface PieceJointeValidee {
+  nom: string;
+  type: string;
+  contenuBase64: string;
+}
+
+/** Validation serveur des fichiers : nature, taille, nombre. */
+export function validerFichiers(
+  fichiers: File[]
+): { ok: true } | { ok: false; erreur: string } {
+  const utiles = fichiers.filter((f) => f.size > 0);
+  if (utiles.length > FICHIERS_MAX) {
+    return { ok: false, erreur: `Trois photos maximum (${utiles.length} reçues).` };
+  }
+  for (const f of utiles) {
+    if (!TYPES_FICHIERS_ACCEPTES.includes(f.type)) {
+      return {
+        ok: false,
+        erreur: `Le format de « ${f.name} » n'est pas accepté (JPEG, PNG ou WebP uniquement).`,
+      };
+    }
+    if (f.size > FICHIER_TAILLE_MAX) {
+      return {
+        ok: false,
+        erreur: `« ${f.name} » dépasse 4 Mo.`,
+      };
+    }
+  }
+  return { ok: true };
+}
+
 export const sujetsLabels: Record<ContactInput["sujet"], string> = {
   "sur-mesure": "Création sur mesure",
   "pret-a-porter": "Prêt-à-porter & personnalisation",

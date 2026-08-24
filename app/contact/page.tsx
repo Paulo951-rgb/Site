@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { construireMetadata } from "@/lib/seo";
 import { siteConfig } from "@/content/siteConfig";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import StatutOuverture from "@/components/ui/StatutOuverture";
 import ContactForm from "@/components/contact/ContactForm";
 import MapEmbed from "@/components/contact/MapEmbed";
 
@@ -45,8 +46,30 @@ export default function ContactPage() {
                 <br />
                 {siteConfig.horaires.jours}
               </address>
-              <p className="mt-2 text-xs text-taupe">
+              <p className="mt-2 text-xs text-taupe-fonce">
                 {siteConfig.horaires.heures}
+              </p>
+              <div className="mt-3">
+                <StatutOuverture />
+              </div>
+            </div>
+
+            <div>
+              <p className="surtitre">Venir</p>
+              <p className="mt-4 text-sm leading-relaxed">
+                {siteConfig.acces.metro}
+                <br />
+                {siteConfig.acces.parking}
+              </p>
+              <p className="mt-3 text-sm">
+                <a
+                  href={siteConfig.acces.itineraire}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lien-souligne"
+                >
+                  Itinéraire
+                </a>
               </p>
             </div>
 
