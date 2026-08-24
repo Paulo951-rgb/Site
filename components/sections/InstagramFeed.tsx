@@ -4,8 +4,10 @@ import ImagePanel from "@/components/ui/ImagePanel";
 import { siteConfig } from "@/content/siteConfig";
 
 /**
- * Aperçu éditorial du compte Instagram de la maison.
- * Si siteConfig.reseaux.instagram est vide, la section s'affiche sans lien.
+ * Aperçu éditorial du compte Instagram.
+ * Le lien du compte reste vide dans siteConfig tant que le client n'a pas
+ * tranché entre les deux comptes candidats (@pierreetpavin / @pierre_pavin) :
+ * dans ce cas, la section s'affiche sans lien externe.
  */
 export default function InstagramFeed() {
   const url = siteConfig.reseaux.instagram;

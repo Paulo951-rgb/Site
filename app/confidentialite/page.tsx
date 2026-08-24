@@ -27,7 +27,7 @@ export default function ConfidentialitePage() {
         <h1 className="mt-6 font-serif text-4xl md:text-5xl">
           Politique de confidentialité
         </h1>
-        <p className="mt-6 text-sm text-taupe-fonce">
+        <p className="mt-6 text-sm text-taupe">
           {/* TODO: compléter et valider les coordonnées RGPD avec le client
               avant publication. */}
           Cette page décrit la manière dont la maison traite vos données, dans

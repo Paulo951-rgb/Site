@@ -4,7 +4,6 @@ import SavoirFaireGrid from "@/components/sections/SavoirFaireGrid";
 import CreationsPreview from "@/components/sections/CreationsPreview";
 import MatieresPreview from "@/components/sections/MatieresPreview";
 import AtelierPreview from "@/components/sections/AtelierPreview";
-import Temoignages from "@/components/sections/Temoignages";
 import InstagramFeed from "@/components/sections/InstagramFeed";
 import ContactCTA from "@/components/sections/ContactCTA";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
@@ -59,8 +58,6 @@ export default function HomePage() {
       <MatieresPreview />
 
       <AtelierPreview />
-
-      <Temoignages />
 
       <section className="border-t border-gris-chaud py-28 md:py-36">
         <div className="conteneur grid gap-10 md:grid-cols-12 md:items-end">

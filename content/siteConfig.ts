@@ -31,32 +31,16 @@ export const siteConfig = {
 
   horaires: {
     jours: "Du mardi au samedi",
-    // Plages issues de la page Facebook officielle de la maison
-    // (« de 10h00 à 13h30 et de 14h30 » — heure de fermeture du soir
-    // ⚠️ TODO: à confirmer avec le client, 19h00 retenu par défaut).
-    heures: "10h00 – 13h30 et 14h30 – 19h00",
-    // Plages [ouverture, fermeture] par jour (0 = dimanche … 6 = samedi)
-    plages: {
-      2: [["10:00", "13:30"], ["14:30", "19:00"]],
-      3: [["10:00", "13:30"], ["14:30", "19:00"]],
-      4: [["10:00", "13:30"], ["14:30", "19:00"]],
-      5: [["10:00", "13:30"], ["14:30", "19:00"]],
-      6: [["10:00", "13:30"], ["14:30", "19:00"]],
-    } as Record<number, [string, string][]>,
-  },
-
-  // Accès : éléments mentionnés sur la page Facebook officielle de la maison
-  acces: {
-    metro: "Métro : Vaugirard (ligne 12)",
-    parking: "Parking : Mairie du 15e",
-    itineraire:
-      "https://www.google.com/maps/dir/?api=1&destination=107+rue+Blomet+75015+Paris",
+    // TODO: confirmer avec le client avant mise en ligne (heures exactes non confirmées).
+    heures: "Horaires à confirmer — merci de nous contacter",
   },
 
   reseaux: {
-    // Compte actif de la maison : la bio mentionne l'atelier-showroom et
-    // renvoie vers le site de la maison.
-    instagram: "https://www.instagram.com/pierre_pavin",
+    // ⚠️ TODO: confirmer avec le client avant mise en ligne.
+    // Deux comptes candidats identifiés : @pierreetpavin (bio mentionnant l'adresse
+    // exacte du 107 rue Blomet) et @pierre_pavin. Laisser vide tant que non tranché.
+    instagram: "",
+    // À confirmer par le client.
     facebook: "https://www.facebook.com/Pierre.et.Pavin",
   },
 

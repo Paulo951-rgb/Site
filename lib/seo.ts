@@ -63,25 +63,9 @@ export function jsonLdLocalBusiness() {
       latitude: siteConfig.adresse.latitude,
       longitude: siteConfig.adresse.longitude,
     },
-    openingHoursSpecification: Object.entries(siteConfig.horaires.plages).flatMap(
-      ([jour, plages]) =>
-        plages.map(([ouvre, ferme]) => ({
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: JOURS_SCHEMA[Number(jour)],
-          opens: ouvre,
-          closes: ferme,
-        })),
-    ),
-    sameAs: [siteConfig.reseaux.instagram, siteConfig.reseaux.facebook].filter(Boolean),
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    },
   };
 }
-
-const JOURS_SCHEMA = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];

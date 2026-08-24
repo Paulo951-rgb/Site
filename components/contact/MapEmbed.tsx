@@ -8,12 +8,7 @@ import MapLeaflet from "./MapLeaflet";
  * Le fournisseur se choisit via NEXT_PUBLIC_MAP_PROVIDER.
  */
 export default function MapEmbed() {
-  const cleGoogle = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
-  // Sans clé valide, l'embed Google serait cassé : repli sur Leaflet/OSM.
-  const fournisseur =
-    (process.env.NEXT_PUBLIC_MAP_PROVIDER ?? "osm") === "google" && cleGoogle
-      ? "google"
-      : "osm";
+  const fournisseur = process.env.NEXT_PUBLIC_MAP_PROVIDER ?? "osm";
   const { latitude, longitude } = siteConfig.adresse;
 
   return (
@@ -21,7 +16,7 @@ export default function MapEmbed() {
       {fournisseur === "google" ? (
         <iframe
           title={`Plan d'accès — ${siteConfig.nomComplet}, ${siteConfig.adresse.rue}, ${siteConfig.adresse.codePostal} ${siteConfig.adresse.ville}`}
-          src={`https://www.google.com/maps/embed/v1/place?key=${cleGoogle}&q=${latitude},${longitude}&zoom=16`}
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}&q=${latitude},${longitude}&zoom=16`}
           className="absolute inset-0 h-full w-full border-0 grayscale-[35%]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

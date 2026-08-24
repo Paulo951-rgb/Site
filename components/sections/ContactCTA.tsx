@@ -18,7 +18,7 @@ export default function ContactCTA({
           <p className="colonne-lecture mx-auto mt-6 text-base text-noir/75">
             {texte}
           </p>
-          <p className="mt-4 text-sm text-taupe-fonce">
+          <p className="mt-4 text-sm text-taupe">
             {siteConfig.adresse.rue}, {siteConfig.adresse.codePostal}{" "}
             {siteConfig.adresse.ville} — {siteConfig.horaires.jours.toLowerCase()}
           </p>

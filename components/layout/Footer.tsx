@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  navigationComplete,
+  navigationPrincipale,
   navigationSecondaire,
 } from "@/content/navigation";
 import { siteConfig } from "@/content/siteConfig";
@@ -11,10 +11,10 @@ export default function Footer() {
       <div className="conteneur grid gap-12 py-20 md:grid-cols-3">
         <div>
           <p className="font-serif text-2xl">{siteConfig.nom}</p>
-          <p className="mt-1 text-xs uppercase tracking-surtitre text-taupe-fonce">
+          <p className="mt-1 text-xs uppercase tracking-surtitre text-taupe">
             {siteConfig.baseline}
           </p>
-          <p className="colonne-lecture mt-6 text-sm text-taupe-fonce">
+          <p className="colonne-lecture mt-6 text-sm text-taupe">
             {siteConfig.description}
           </p>
         </div>
@@ -22,7 +22,7 @@ export default function Footer() {
         <nav aria-label="Navigation de pied de page">
           <p className="surtitre">La maison</p>
           <ul className="mt-5 space-y-3">
-            {navigationComplete.map((lien) => (
+            {navigationPrincipale.map((lien) => (
               <li key={lien.href}>
                 <Link
                   href={lien.href}
@@ -52,33 +52,23 @@ export default function Footer() {
               {siteConfig.contact.email}
             </a>
           </p>
-          <div className="mt-2 flex flex-col gap-2 text-sm">
-            {siteConfig.reseaux.instagram && (
+          {siteConfig.reseaux.instagram && (
+            <p className="mt-2 text-sm">
               <a
                 href={siteConfig.reseaux.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="lien-souligne self-start"
+                className="lien-souligne"
               >
                 Instagram
               </a>
-            )}
-            {siteConfig.reseaux.facebook && (
-              <a
-                href={siteConfig.reseaux.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lien-souligne self-start"
-              >
-                Facebook
-              </a>
-            )}
-          </div>
+            </p>
+          )}
         </div>
       </div>
 
       <div className="border-t border-gris-chaud">
-        <div className="conteneur flex flex-col items-start justify-between gap-4 py-6 text-xs text-taupe-fonce md:flex-row md:items-center">
+        <div className="conteneur flex flex-col items-start justify-between gap-4 py-6 text-xs text-taupe md:flex-row md:items-center">
           <p>
             © {new Date().getFullYear()} {siteConfig.nomComplet}
           </p>
