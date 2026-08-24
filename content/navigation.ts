@@ -17,6 +17,7 @@ export const navigationPrincipale: LienNavigation[] = [
 export const navigationComplete: LienNavigation[] = [
   ...navigationPrincipale.slice(0, 6),
   { label: "Entretien", href: "/entretien" },
+  { label: "Journal", href: "/journal" },
   { label: "Questions fréquentes", href: "/faq" },
   navigationPrincipale[6],
 ];
