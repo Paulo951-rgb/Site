@@ -22,13 +22,6 @@ export type CreationStatut =
   | "archive"
   | "sur-demande";
 
-export interface ComparaisonAvantApres {
-  avant: string;
-  apres: string;
-  legendeAvant?: string;
-  legendeApres?: string;
-}
-
 export interface Creation {
   id: string;
   nom: string;
@@ -40,12 +33,6 @@ export interface Creation {
   details?: string[];
   images: string[];
   featured?: boolean;
-  /**
-   * Paire de photos réelles avant/après fournie par la maison
-   * (restauration, patine). Ne jamais simuler : le comparateur ne
-   * s'affiche que si ce champ est renseigné avec des images authentiques.
-   */
-  comparaison?: ComparaisonAvantApres;
 }
 
 export const categoriesLabels: Record<CreationCategorie, string> = {

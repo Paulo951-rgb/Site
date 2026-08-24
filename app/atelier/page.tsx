@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { construireMetadata } from "@/lib/seo";
 import { siteConfig } from "@/content/siteConfig";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
-import StatutOuverture from "@/components/ui/StatutOuverture";
 import ImagePanel from "@/components/ui/ImagePanel";
 import SectionTitle from "@/components/ui/SectionTitle";
 import MapEmbed from "@/components/contact/MapEmbed";
@@ -59,13 +58,7 @@ export default function AtelierPage() {
                   {siteConfig.adresse.codePostal} {siteConfig.adresse.ville}
                 </address>
                 <p>{siteConfig.horaires.jours}</p>
-                <p className="text-taupe-fonce">{siteConfig.horaires.heures}</p>
-                <p className="text-taupe-fonce">
-                  {siteConfig.acces.metro} — {siteConfig.acces.parking}
-                </p>
-                <div className="pt-2">
-                  <StatutOuverture />
-                </div>
+                <p className="text-taupe">{siteConfig.horaires.heures}</p>
               </SectionTitle>
             </RevealOnScroll>
             <RevealOnScroll delai={0.15}>

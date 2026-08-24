@@ -21,11 +21,11 @@ export default function CreationCard({ creation }: { creation: Creation }) {
         <h3 className="font-serif text-2xl text-noir transition-colors duration-300 group-hover:text-cuir">
           {creation.nom}
         </h3>
-        <p className="shrink-0 text-xs uppercase tracking-surtitre text-taupe-fonce">
+        <p className="shrink-0 text-xs uppercase tracking-surtitre text-taupe">
           {statutsLabels[creation.statut]}
         </p>
       </div>
-      <p className="mt-1 text-xs uppercase tracking-surtitre text-taupe-fonce">
+      <p className="mt-1 text-xs uppercase tracking-surtitre text-taupe">
         {categoriesLabels[creation.categorie]}
       </p>
     </Link>

@@ -1,7 +1,6 @@
 import type { Creation } from "@/content/creations";
 import { categoriesLabels, statutsLabels } from "@/content/creations";
 import ImagePanel from "@/components/ui/ImagePanel";
-import AvantApres from "@/components/ui/AvantApres";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { ButtonLien } from "@/components/ui/Button";
 import CreationGallery from "./CreationGallery";
@@ -37,14 +36,14 @@ export default function CreationDetail({ creation }: { creation: Creation }) {
           <RevealOnScroll delai={0.2}>
             <dl className="mt-10 border-t border-gris-chaud">
               <div className="grid grid-cols-3 gap-4 border-b border-gris-chaud py-5">
-                <dt className="text-xs uppercase tracking-surtitre text-taupe-fonce">
+                <dt className="text-xs uppercase tracking-surtitre text-taupe">
                   Matière
                 </dt>
                 <dd className="col-span-2 text-sm">{creation.matiere}</dd>
               </div>
               {creation.details && creation.details.length > 0 && (
                 <div className="grid grid-cols-3 gap-4 border-b border-gris-chaud py-5">
-                  <dt className="text-xs uppercase tracking-surtitre text-taupe-fonce">
+                  <dt className="text-xs uppercase tracking-surtitre text-taupe">
                     Détails
                   </dt>
                   <dd className="col-span-2">
@@ -69,23 +68,6 @@ export default function CreationDetail({ creation }: { creation: Creation }) {
           </RevealOnScroll>
         </div>
       </div>
-
-      {creation.comparaison && (
-        <div className="conteneur mt-20">
-          <RevealOnScroll>
-            <p className="surtitre">Avant / après</p>
-            <div className="mt-6 max-w-3xl">
-              <AvantApres
-                avant={creation.comparaison.avant}
-                apres={creation.comparaison.apres}
-                alt={creation.nom}
-                legendeAvant={creation.comparaison.legendeAvant}
-                legendeApres={creation.comparaison.legendeApres}
-              />
-            </div>
-          </RevealOnScroll>
-        </div>
-      )}
 
       <div className="conteneur mt-20 pb-28">
         <CreationGallery images={creation.images} nom={creation.nom} />

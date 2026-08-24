@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/content/siteConfig";
 import { creations } from "@/content/creations";
 import { navigationPrincipale } from "@/content/navigation";
-import { articles } from "@/content/journal";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.seo.url;
@@ -13,15 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}${lien.href}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-    })),
-    { url: `${base}/entretien`, changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: `${base}/faq`, changeFrequency: "monthly" as const, priority: 0.5 },
-    { url: `${base}/journal`, changeFrequency: "weekly" as const, priority: 0.5 },
-    ...articles.map((a) => ({
-      url: `${base}/journal/${a.slug}`,
-      lastModified: new Date(a.date),
-      changeFrequency: "yearly" as const,
-      priority: 0.4,
     })),
     ...creations.map((c) => ({
       url: `${base}/creations/${c.slug}`,

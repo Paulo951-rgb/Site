@@ -1,68 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { navigationComplete } from "@/content/navigation";
+import { navigationPrincipale } from "@/content/navigation";
 import { siteConfig } from "@/content/siteConfig";
-import { t } from "@/content/i18n";
-
-const SELECTEUR_FOCUSABLES =
-  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export default function FullscreenMenu({
   ouvert,
   onNavigate,
-  onFermer,
 }: {
   ouvert: boolean;
   onNavigate: () => void;
-  onFermer: () => void;
 }) {
   const reduit = useReducedMotion();
-  const dialogueRef = useRef<HTMLDivElement>(null);
-
-  // Accessibilité : focus dans le dialogue à l'ouverture, piège à focus
-  // (Tab / Maj+Tab cyclent), Échap ferme, le parent rend le focus au bouton.
-  useEffect(() => {
-    if (!ouvert) return;
-    const dialogue = dialogueRef.current;
-    if (!dialogue) return;
-
-    const focusables = () =>
-      Array.from(dialogue.querySelectorAll<HTMLElement>(SELECTEUR_FOCUSABLES));
-
-    focusables()[0]?.focus();
-
-    const surTouche = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        onFermer();
-        return;
-      }
-      if (e.key !== "Tab") return;
-      const elements = focusables();
-      if (elements.length === 0) return;
-      const premier = elements[0];
-      const dernier = elements[elements.length - 1];
-      if (e.shiftKey && document.activeElement === premier) {
-        e.preventDefault();
-        dernier.focus();
-      } else if (!e.shiftKey && document.activeElement === dernier) {
-        e.preventDefault();
-        premier.focus();
-      }
-    };
-
-    document.addEventListener("keydown", surTouche);
-    return () => document.removeEventListener("keydown", surTouche);
-  }, [ouvert, onFermer]);
 
   return (
     <AnimatePresence>
       {ouvert && (
         <motion.div
-          ref={dialogueRef}
           id="menu-plein-ecran"
           role="dialog"
           aria-modal="true"
@@ -74,24 +29,24 @@ export default function FullscreenMenu({
           transition={{ duration: reduit ? 0.15 : 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <nav
-            aria-label={t().navigationPrincipale}
+            aria-label="Navigation plein écran"
             className="conteneur flex flex-1 flex-col justify-center gap-2 pt-20"
           >
-            {navigationComplete.map((lien, i) => (
+            {navigationPrincipale.map((lien, i) => (
               <motion.div
                 key={lien.href}
                 initial={reduit ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.5,
-                  delay: reduit ? 0 : 0.08 + i * 0.04,
+                  delay: reduit ? 0 : 0.08 + i * 0.05,
                   ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 <Link
                   href={lien.href}
                   onClick={onNavigate}
-                  className="block border-b border-ivoire/10 py-2 font-serif text-3xl transition-colors duration-300 hover:text-taupe md:py-3 md:text-5xl"
+                  className="block border-b border-ivoire/10 py-3 font-serif text-4xl transition-colors duration-300 hover:text-taupe md:text-5xl"
                 >
                   {lien.label}
                 </Link>
