@@ -14,10 +14,14 @@ export default function MapLeaflet() {
   useEffect(() => {
     if (!ref.current) return;
     let carte: import("leaflet").Map | undefined;
+    // Sans ce drapeau, un démontage/remontage rapide (StrictMode, navigation)
+    // laisserait l'import asynchrone initialiser deux cartes sur le même
+    // conteneur — Leaflet lève alors « Map container is already initialized ».
+    let annule = false;
 
     void (async () => {
       const L = await import("leaflet");
-      if (!ref.current) return;
+      if (annule || !ref.current) return;
 
       const centre: [number, number] = [
         siteConfig.adresse.latitude,
@@ -51,6 +55,7 @@ export default function MapLeaflet() {
     })();
 
     return () => {
+      annule = true;
       carte?.remove();
     };
   }, []);

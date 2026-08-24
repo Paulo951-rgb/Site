@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { construireMetadata } from "@/lib/seo";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import ImagePanel from "@/components/ui/ImagePanel";
@@ -107,8 +108,14 @@ export default function SurMesurePage() {
                 recolorisation de votre maroquinerie. Les commandes finalisées
                 en atelier sont livrées de manière sécurisée.
               </p>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-wrap items-center gap-6">
                 <ButtonLien href="/contact">Prendre rendez-vous</ButtonLien>
+                <Link
+                  href="/faq"
+                  className="lien-souligne text-sm uppercase tracking-surtitre text-taupe-fonce transition-colors duration-300 hover:text-cuir"
+                >
+                  Questions fréquentes
+                </Link>
               </div>
             </RevealOnScroll>
           </div>

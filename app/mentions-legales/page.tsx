@@ -29,7 +29,7 @@ export default function MentionsLegalesPage() {
         <h1 className="mt-6 font-serif text-4xl md:text-5xl">
           Informations légales
         </h1>
-        <p className="mt-6 text-sm text-taupe">
+        <p className="mt-6 text-sm text-taupe-fonce">
           {/* TODO: faire valider cette page par le client avant publication —
               les informations légales peuvent avoir évolué. */}
           Les informations ci-dessous sont en cours de validation définitive

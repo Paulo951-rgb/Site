@@ -16,8 +16,13 @@ const config: Config = {
       noir: "#14100D",
       cuir: "#5B3A29",
       taupe: "#A79A8C",
+      // Variante assombrie du taupe : 5,2:1 sur ivoire (WCAG AA pour le texte).
+      // `taupe` reste réservé aux fonds sombres (6,9:1 sur noir) et aux décors.
+      "taupe-fonce": "#6E655C",
       "gris-chaud": "#DED7CC",
       metal: "#8C7A5B",
+      // Point de statut « ouvert » (pastille décorative uniquement)
+      vert: "#3F7A52",
       transparent: "transparent",
       current: "currentColor",
     },

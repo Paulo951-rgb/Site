@@ -16,6 +16,12 @@
     @apply bg-cuir text-ivoire;
   }
 
+  /* Indicateur de focus clavier visible sur fond clair comme sombre */
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
   /* Respect strict de prefers-reduced-motion */
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -37,7 +43,9 @@
   }
 
   .surtitre {
-    @apply font-sans text-xs uppercase tracking-surtitre text-taupe;
+    /* taupe-fonce : lisible sur fond clair (AA) ; sur fond sombre, utiliser
+       explicitement text-taupe. */
+    @apply font-sans text-xs uppercase tracking-surtitre text-taupe-fonce;
   }
 
   .lien-souligne {
