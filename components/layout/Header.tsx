@@ -1,16 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navigationPrincipale } from "@/content/navigation";
 import { siteConfig } from "@/content/siteConfig";
+import { t } from "@/content/i18n";
 import FullscreenMenu from "./FullscreenMenu";
 
 export default function Header() {
   const [menuOuvert, setMenuOuvert] = useState(false);
   const [defile, setDefile] = useState(false);
   const pathname = usePathname();
+  const boutonMenuRef = useRef<HTMLButtonElement>(null);
+  // Le focus n'est rendu au bouton que si le menu était réellement ouvert
+  // (évite de voler le focus au premier rendu).
+  const menuEtaitOuvert = useRef(false);
 
   useEffect(() => {
     const auDefilement = () => setDefile(window.scrollY > 24);
@@ -21,6 +26,12 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOuvert ? "hidden" : "";
+    if (menuOuvert) {
+      menuEtaitOuvert.current = true;
+    } else if (menuEtaitOuvert.current) {
+      menuEtaitOuvert.current = false;
+      boutonMenuRef.current?.focus();
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -46,19 +57,24 @@ export default function Header() {
             aria-label={`${siteConfig.nomComplet} — accueil`}
           >
             {siteConfig.nom}
-            <span className="ml-2 hidden text-xs uppercase tracking-surtitre text-taupe sm:inline">
+            <span
+              className={`ml-2 hidden text-xs uppercase tracking-surtitre sm:inline ${
+                surFondSombre ? "text-taupe" : "text-taupe-fonce"
+              }`}
+            >
               {siteConfig.baseline}
             </span>
           </Link>
 
           <nav
-            aria-label="Navigation principale"
+            aria-label={t().navigationPrincipale}
             className="hidden items-center gap-8 lg:flex"
           >
             {navigationPrincipale.map((lien) => (
               <Link
                 key={lien.href}
                 href={lien.href}
+                aria-current={pathname === lien.href ? "page" : undefined}
                 className={`lien-souligne text-sm tracking-large transition-colors duration-300 ${
                   pathname === lien.href ? "text-cuir" : "hover:text-cuir"
                 }`}
@@ -70,6 +86,7 @@ export default function Header() {
 
           <button
             type="button"
+            ref={boutonMenuRef}
             onClick={() => setMenuOuvert((v) => !v)}
             aria-expanded={menuOuvert}
             aria-controls="menu-plein-ecran"
@@ -95,6 +112,7 @@ export default function Header() {
       <FullscreenMenu
         ouvert={menuOuvert}
         onNavigate={() => setMenuOuvert(false)}
+        onFermer={() => setMenuOuvert(false)}
       />
     </>
   );

@@ -1,8 +1,37 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/validation";
-import { envoyerEmailContact } from "@/lib/email";
+import {
+  contactSchema,
+  validerFichiers,
+  type PieceJointeValidee,
+} from "@/lib/validation";
+import { envoyerConfirmation, envoyerEmailContact } from "@/lib/email";
 
 export const runtime = "nodejs";
+
+/** Extrait champs texte + fichiers selon le type de contenu de la requête. */
+async function lireRequete(
+  request: Request
+): Promise<{ corps: unknown; fichiers: File[] } | null> {
+  const typeContenu = request.headers.get("content-type") ?? "";
+  try {
+    if (typeContenu.includes("multipart/form-data")) {
+      const form = await request.formData();
+      const corps: Record<string, unknown> = {};
+      for (const [cle, valeur] of form.entries()) {
+        if (typeof valeur === "string") corps[cle] = valeur;
+      }
+      return {
+        corps,
+        fichiers: form
+          .getAll("fichiers")
+          .filter((f): f is File => f instanceof File),
+      };
+    }
+    return { corps: await request.json(), fichiers: [] };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Rate limiting basique en mémoire (par IP) : 5 messages / 10 minutes.
@@ -28,15 +57,14 @@ function limiteDepassee(ip: string): boolean {
 }
 
 export async function POST(request: Request) {
-  let corps: unknown;
-  try {
-    corps = await request.json();
-  } catch {
+  const lecture = await lireRequete(request);
+  if (!lecture) {
     return NextResponse.json(
       { message: "Requête invalide." },
       { status: 400 }
     );
   }
+  const { corps, fichiers } = lecture;
 
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
@@ -76,7 +104,27 @@ export async function POST(request: Request) {
     );
   }
 
-  const envoi = await envoyerEmailContact(resultat.data);
+  const fichiersValides = validerFichiers(fichiers);
+  if (!fichiersValides.ok) {
+    return NextResponse.json(
+      { message: fichiersValides.erreur, erreurs: { fichiers: fichiersValides.erreur } },
+      { status: 422 }
+    );
+  }
+
+  // Encodage base64 uniquement après validation complète (mémoire bornée
+  // par la limite de taille et de nombre).
+  const piecesJointes: PieceJointeValidee[] = await Promise.all(
+    fichiers
+      .filter((f) => f.size > 0)
+      .map(async (f) => ({
+        nom: f.name,
+        type: f.type,
+        contenuBase64: Buffer.from(await f.arrayBuffer()).toString("base64"),
+      }))
+  );
+
+  const envoi = await envoyerEmailContact(resultat.data, piecesJointes);
   if (!envoi.ok) {
     return NextResponse.json(
       {
@@ -86,6 +134,9 @@ export async function POST(request: Request) {
       { status: 502 }
     );
   }
+
+  // Accusé de réception : en cas d'échec, la demande reste valide.
+  await envoyerConfirmation(resultat.data);
 
   return NextResponse.json({ ok: true });
 }

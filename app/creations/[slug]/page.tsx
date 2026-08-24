@@ -48,7 +48,7 @@ export default async function CreationPage({
       <div className="conteneur pt-28">
         <Link
           href="/creations"
-          className="lien-souligne text-xs uppercase tracking-surtitre text-taupe"
+          className="lien-souligne text-xs uppercase tracking-surtitre text-taupe-fonce"
         >
           ← Toutes les créations
         </Link>
