@@ -92,9 +92,9 @@ export default function ContactForm() {
       <div className="border border-gris-chaud bg-ivoire p-10" role="status">
         <p className="font-serif text-2xl">Votre message est bien parti.</p>
         <p className="mt-4 text-sm text-noir/75">
-          Un accusé de réception vient d'être envoyé à votre adresse email.
-          L'atelier vous répondra ensuite personnellement, dans les meilleurs
-          délais. Vous pouvez aussi passer nous voir{" "}
+          Si votre adresse est valide, un accusé de réception vient d'y être
+          envoyé. L'atelier vous répondra ensuite personnellement, dans les
+          meilleurs délais. Vous pouvez aussi passer nous voir{" "}
           {siteConfig.horaires.jours.toLowerCase()} ou nous écrire directement.
         </p>
         <button
@@ -170,7 +170,15 @@ export default function ContactForm() {
           <label htmlFor="sujet" className={champLabel}>
             Sujet
           </label>
-          <select id="sujet" name="sujet" required className={champSaisie} defaultValue="">
+          <select
+            id="sujet"
+            name="sujet"
+            required
+            className={champSaisie}
+            defaultValue=""
+            aria-invalid={Boolean(erreurs.sujet)}
+            aria-describedby={erreurs.sujet ? "erreur-sujet" : undefined}
+          >
             <option value="" disabled>
               Choisir un sujet
             </option>
@@ -183,7 +191,9 @@ export default function ContactForm() {
             )}
           </select>
           {erreurs.sujet && (
-            <p className="mt-2 text-xs text-cuir">{erreurs.sujet}</p>
+            <p id="erreur-sujet" className="mt-2 text-xs text-cuir">
+              {erreurs.sujet}
+            </p>
           )}
         </div>
       </div>

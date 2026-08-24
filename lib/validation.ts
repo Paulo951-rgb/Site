@@ -59,7 +59,7 @@ export interface PieceJointeValidee {
 /** Validation serveur des fichiers : nature, taille, nombre. */
 export function validerFichiers(
   fichiers: File[]
-): { ok: true; pieces: PieceJointeValidee[] } | { ok: false; erreur: string } {
+): { ok: true } | { ok: false; erreur: string } {
   const utiles = fichiers.filter((f) => f.size > 0);
   if (utiles.length > FICHIERS_MAX) {
     return { ok: false, erreur: `Trois photos maximum (${utiles.length} reçues).` };
@@ -78,10 +78,7 @@ export function validerFichiers(
       };
     }
   }
-  return {
-    ok: true,
-    pieces: utiles.map((f) => ({ nom: f.name, type: f.type, contenuBase64: "" })),
-  };
+  return { ok: true };
 }
 
 export const sujetsLabels: Record<ContactInput["sujet"], string> = {

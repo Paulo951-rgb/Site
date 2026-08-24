@@ -27,7 +27,9 @@ function maintenantParis(): { jour: number; minutes: number } {
     weekday: "short",
     hour: "2-digit",
     minute: "2-digit",
-    hour12: false,
+    // hourCycle h23 : avec hour12:false, certaines implémentations ICU
+    // renvoient « 24 » à minuit, ce qui fausserait le calcul en minutes.
+    hourCycle: "h23",
   }).formatToParts(new Date());
   const get = (type: string) =>
     parties.find((p) => p.type === type)?.value ?? "";

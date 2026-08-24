@@ -29,10 +29,13 @@ export async function generateMetadata({
 }
 
 const formaterDate = (iso: string) =>
+  // timeZone fixe : "AAAA-MM-JJ" est parsé en UTC ; sans fuseau explicite,
+  // la date affichée peut reculer d'un jour selon le fuseau du visiteur.
   new Intl.DateTimeFormat("fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "Europe/Paris",
   }).format(new Date(iso));
 
 export default async function PageArticle({

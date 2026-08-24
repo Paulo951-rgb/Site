@@ -66,7 +66,7 @@ export default function FullscreenMenu({
           id="menu-plein-ecran"
           role="dialog"
           aria-modal="true"
-          aria-label={t().ouvrirMenu}
+          aria-label="Menu"
           className="fixed inset-0 z-30 flex flex-col bg-noir text-ivoire"
           initial={reduit ? { opacity: 0 } : { opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}

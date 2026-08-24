@@ -41,9 +41,22 @@ async function lireRequete(
 const FENETRE_MS = 10 * 60 * 1000;
 const MAX_REQUETES = 5;
 const requetes = new Map<string, number[]>();
+let dernierePurge = 0;
+
+/** Évite la croissance non bornée de la Map sur un serveur longue durée. */
+function purgerRequetes(maintenant: number) {
+  if (maintenant - dernierePurge < FENETRE_MS) return;
+  dernierePurge = maintenant;
+  for (const [ip, horodatages] of requetes) {
+    const recents = horodatages.filter((t) => maintenant - t < FENETRE_MS);
+    if (recents.length === 0) requetes.delete(ip);
+    else requetes.set(ip, recents);
+  }
+}
 
 function limiteDepassee(ip: string): boolean {
   const maintenant = Date.now();
+  purgerRequetes(maintenant);
   const horodatages = (requetes.get(ip) ?? []).filter(
     (t) => maintenant - t < FENETRE_MS
   );
@@ -56,7 +69,42 @@ function limiteDepassee(ip: string): boolean {
   return false;
 }
 
+// 3 photos × 4 Mo + champs et marge multipart : au-delà, on rejette avant
+// de parser le corps en mémoire (request.formData() n'a pas de limite native).
+const TAILLE_CORPS_MAX = 14 * 1024 * 1024;
+
+/** Vérifie la signature binaire réelle du fichier contre son type déclaré. */
+function signatureImageValide(tampon: Buffer, type: string): boolean {
+  if (tampon.length < 12) return false;
+  if (type === "image/jpeg") {
+    return tampon[0] === 0xff && tampon[1] === 0xd8 && tampon[2] === 0xff;
+  }
+  if (type === "image/png") {
+    return (
+      tampon[0] === 0x89 &&
+      tampon[1] === 0x50 &&
+      tampon[2] === 0x4e &&
+      tampon[3] === 0x47
+    );
+  }
+  if (type === "image/webp") {
+    return (
+      tampon.toString("ascii", 0, 4) === "RIFF" &&
+      tampon.toString("ascii", 8, 12) === "WEBP"
+    );
+  }
+  return false;
+}
+
 export async function POST(request: Request) {
+  const tailleAnnoncee = Number(request.headers.get("content-length") ?? 0);
+  if (tailleAnnoncee > TAILLE_CORPS_MAX) {
+    return NextResponse.json(
+      { message: "Le message est trop volumineux (photos trop lourdes)." },
+      { status: 413 }
+    );
+  }
+
   const lecture = await lireRequete(request);
   if (!lecture) {
     return NextResponse.json(
@@ -113,16 +161,26 @@ export async function POST(request: Request) {
   }
 
   // Encodage base64 uniquement après validation complète (mémoire bornée
-  // par la limite de taille et de nombre).
-  const piecesJointes: PieceJointeValidee[] = await Promise.all(
-    fichiers
-      .filter((f) => f.size > 0)
-      .map(async (f) => ({
-        nom: f.name,
-        type: f.type,
-        contenuBase64: Buffer.from(await f.arrayBuffer()).toString("base64"),
-      }))
-  );
+  // par la limite de taille et de nombre). Le type MIME déclaré par le
+  // client n'étant pas fiable, on vérifie les magic bytes du contenu.
+  const piecesJointes: PieceJointeValidee[] = [];
+  for (const f of fichiers.filter((f) => f.size > 0)) {
+    const tampon = Buffer.from(await f.arrayBuffer());
+    if (!signatureImageValide(tampon, f.type)) {
+      return NextResponse.json(
+        {
+          message: `Le contenu de « ${f.name} » ne correspond pas à une image.`,
+          erreurs: { fichiers: `Le contenu de « ${f.name} » ne correspond pas à une image.` },
+        },
+        { status: 422 }
+      );
+    }
+    piecesJointes.push({
+      nom: f.name,
+      type: f.type,
+      contenuBase64: tampon.toString("base64"),
+    });
+  }
 
   const envoi = await envoyerEmailContact(resultat.data, piecesJointes);
   if (!envoi.ok) {

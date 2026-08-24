@@ -82,7 +82,9 @@ export default function AvantApres({
           className="absolute inset-y-0 w-px bg-ivoire"
           style={{ left: `${position}%` }}
         >
-          <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivoire/60 bg-noir/50 text-ivoire backdrop-blur-sm">
+          {/* group-focus-within : l'input range est invisible (opacity-0),
+              la poignée sert donc d'indicateur de focus clavier. */}
+          <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-ivoire/60 bg-noir/50 text-ivoire backdrop-blur-sm group-focus-within:border-cuir group-focus-within:ring-2 group-focus-within:ring-cuir">
             ⇔
           </span>
         </div>

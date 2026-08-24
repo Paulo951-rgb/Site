@@ -24,6 +24,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", auDefilement);
   }, []);
 
+  // Si la fenêtre passe en largeur desktop pendant que le menu est ouvert,
+  // le bouton bascule disparaît (lg:hidden) : il faut fermer le menu,
+  // sinon l'écran reste couvert et le scroll verrouillé sans issue visible.
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    const auChangement = (e: MediaQueryListEvent) => {
+      if (e.matches) setMenuOuvert(false);
+    };
+    media.addEventListener("change", auChangement);
+    return () => media.removeEventListener("change", auChangement);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = menuOuvert ? "hidden" : "";
     if (menuOuvert) {
