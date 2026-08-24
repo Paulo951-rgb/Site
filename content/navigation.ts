@@ -13,6 +13,15 @@ export const navigationPrincipale: LienNavigation[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Liste complète : menu plein écran et pied de page. */
+export const navigationComplete: LienNavigation[] = [
+  ...navigationPrincipale.slice(0, 6),
+  { label: "Entretien", href: "/entretien" },
+  { label: "Journal", href: "/journal" },
+  { label: "Questions fréquentes", href: "/faq" },
+  navigationPrincipale[6],
+];
+
 export const navigationSecondaire: LienNavigation[] = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "Confidentialité", href: "/confidentialite" },

@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Analytics from "@/components/ui/Analytics";
 import { construireMetadata, jsonLdLocalBusiness } from "@/lib/seo";
+import { t } from "@/content/i18n";
 
 // Typographies self-hostées via next/font : pas de FOUT ni de CLS.
 const titres = Fraunces({
@@ -36,7 +37,7 @@ export default function RootLayout({
           href="#contenu"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-noir focus:px-4 focus:py-2 focus:text-ivoire"
         >
-          Aller au contenu
+          {t().passerAuContenu}
         </a>
         <Header />
         <main id="contenu">{children}</main>
