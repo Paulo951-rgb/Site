@@ -12,7 +12,7 @@ const styles: Record<Variante, string> = {
 };
 
 const base =
-  "inline-block px-8 py-4 text-xs uppercase tracking-surtitre transition-colors duration-400 ease-doux";
+  "inline-block px-6 py-3 text-[10px] uppercase tracking-surtitre transition-colors duration-400 ease-doux sm:px-8 sm:py-4 sm:text-xs";
 
 export function ButtonLien({
   href,

@@ -62,7 +62,7 @@ export default function HomePage() {
 
       <Temoignages />
 
-      <section className="border-t border-gris-chaud py-28 md:py-36">
+      <section className="border-t border-gris-chaud py-20 md:py-36">
         <div className="conteneur grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <RevealOnScroll>

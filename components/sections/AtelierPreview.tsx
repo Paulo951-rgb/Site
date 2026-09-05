@@ -6,22 +6,22 @@ import { siteConfig } from "@/content/siteConfig";
 
 export default function AtelierPreview() {
   return (
-    <section className="py-28 md:py-40">
+    <section className="py-20 md:py-40">
       <div className="conteneur grid items-center gap-14 lg:grid-cols-2">
-        <RevealOnScroll>
-          <div className="grid grid-cols-12 gap-4">
-            <ImagePanel
-              src="/images/atelier/atelier-01.jpg"
-              alt="L'atelier Pierre & Pavin, rue Blomet"
-              ratio="aspect-[3/4]"
-              className="col-span-8"
-            />
-            <ImagePanel
-              src="/images/atelier/atelier-02.jpg"
-              alt="Outils et gestes de l'atelier"
-              ratio="aspect-[3/4]"
-              className="col-span-4 col-start-9 mt-16"
-            />
+          <RevealOnScroll>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+              <ImagePanel
+                src="/images/atelier/atelier-01.jpg"
+                alt="L'atelier Pierre & Pavin, rue Blomet"
+                ratio="aspect-[4/5]"
+                className="md:col-span-8"
+              />
+              <ImagePanel
+                src="/images/atelier/atelier-02.jpg"
+                alt="Outils et gestes de l'atelier"
+                ratio="aspect-[4/5]"
+                className="md:col-span-4 md:col-start-9 md:mt-16"
+              />
           </div>
         </RevealOnScroll>
 

@@ -28,10 +28,10 @@ export default function PageFaq() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="conteneur pb-16 pt-40 md:pt-52">
+      <section className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Questions fréquentes</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Tout ce que l'on nous demande, sans détour
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">

@@ -15,10 +15,10 @@ export const metadata: Metadata = construireMetadata({
 export default function MatieresPage() {
   return (
     <>
-      <section className="conteneur pb-16 pt-40 md:pt-52">
+      <section className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Matières</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             La matière d'abord
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -29,7 +29,7 @@ export default function MatieresPage() {
         </RevealOnScroll>
       </section>
 
-      <section className="pb-28">
+      <section className="pb-20 md:pb-28">
         <div className="conteneur grid gap-14 md:grid-cols-2">
           {matieres.map((matiere, i) => (
             <RevealOnScroll key={matiere.slug} delai={i * 0.06}>
@@ -52,7 +52,7 @@ export default function MatieresPage() {
         </div>
       </section>
 
-      <section className="bg-noir py-28 text-ivoire md:py-36">
+      <section className="bg-noir py-20 text-ivoire md:py-36">
         <div className="conteneur">
           <RevealOnScroll>
             <p className="surtitre">Tanneries partenaires</p>

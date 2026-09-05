@@ -16,10 +16,10 @@ export const metadata: Metadata = construireMetadata({
 export default function ContactPage() {
   return (
     <>
-      <section className="conteneur pb-16 pt-40 md:pt-52">
+      <section className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Contact</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Parler de votre projet
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -30,13 +30,13 @@ export default function ContactPage() {
         </RevealOnScroll>
       </section>
 
-      <section className="conteneur grid gap-16 pb-28 lg:grid-cols-5">
+      <section className="conteneur grid gap-10 pb-20 md:pb-28 lg:grid-cols-5">
         <RevealOnScroll className="lg:col-span-3">
           <ContactForm />
         </RevealOnScroll>
 
         <RevealOnScroll delai={0.15} className="lg:col-span-2">
-          <aside className="space-y-10 border-t border-gris-chaud pt-10 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+          <aside className="space-y-8 border-t border-gris-chaud pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
             <div>
               <p className="surtitre">L'atelier</p>
               <address className="mt-4 text-sm not-italic leading-relaxed">

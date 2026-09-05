@@ -18,7 +18,7 @@ export default function CreationCard({ creation }: { creation: Creation }) {
         sizes="(max-width: 768px) 100vw, 33vw"
       />
       <div className="mt-5 flex items-baseline justify-between gap-4">
-        <h3 className="font-serif text-2xl text-noir transition-colors duration-300 group-hover:text-cuir">
+         <h3 className="font-serif text-xl text-noir transition-colors duration-300 group-hover:text-cuir sm:text-2xl">
           {creation.nom}
         </h3>
         <p className="shrink-0 text-xs uppercase tracking-surtitre text-taupe-fonce">

@@ -23,7 +23,7 @@ function Bloc({ titre, children }: { titre: string; children: React.ReactNode })
 
 export default function MentionsLegalesPage() {
   return (
-    <div className="conteneur max-w-3xl pb-28 pt-40 md:pt-52">
+    <div className="conteneur max-w-3xl pb-28 pt-24 sm:pt-32 md:pt-52">
       <RevealOnScroll>
         <p className="surtitre">Mentions légales</p>
         <h1 className="mt-6 font-serif text-4xl md:text-5xl">

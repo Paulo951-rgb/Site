@@ -55,10 +55,10 @@ const savoirs = [
 export default function SavoirFairePage() {
   return (
     <>
-      <section className="conteneur pb-20 pt-40 md:pt-52">
+      <section className="conteneur pb-20 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Savoir-faire</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Des gestes appris, transmis, répétés
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -69,12 +69,12 @@ export default function SavoirFairePage() {
         </RevealOnScroll>
       </section>
 
-      <section className="pb-28 md:pb-40">
-        <div className="conteneur space-y-24 md:space-y-32">
+      <section className="pb-20 md:pb-40">
+        <div className="conteneur space-y-20 md:space-y-32">
           {savoirs.map((savoir, i) => (
             <div
               key={savoir.titre}
-              className={`grid items-center gap-12 lg:grid-cols-2 ${
+                   className={`grid items-center gap-8 lg:grid-cols-2 ${
                 i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
               }`}
             >
@@ -88,7 +88,7 @@ export default function SavoirFairePage() {
               </RevealOnScroll>
               <RevealOnScroll delai={0.1}>
                 <p className="surtitre">{String(i + 1).padStart(2, "0")}</p>
-                <h2 className="mt-4 font-serif text-3xl md:text-4xl">
+                <h2 className="mt-4 font-serif text-2xl md:text-4xl">
                   {savoir.titre}
                 </h2>
                 <p className="colonne-lecture mt-6 text-base text-noir/80">
@@ -100,7 +100,7 @@ export default function SavoirFairePage() {
         </div>
       </section>
 
-      <section className="border-t border-gris-chaud py-24 text-center md:py-32">
+      <section className="border-t border-gris-chaud py-20 text-center md:py-32">
         <RevealOnScroll>
           <div className="conteneur">
             <SectionTitle

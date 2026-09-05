@@ -22,7 +22,7 @@ export default function SavoirFaireGrid({
   inverse?: boolean;
 }) {
   return (
-    <section className={`py-28 md:py-40 ${inverse ? "bg-noir text-ivoire" : ""}`}>
+    <section className={`py-20 md:py-40 ${inverse ? "bg-noir text-ivoire" : ""}`}>
       <div className="conteneur">
         <RevealOnScroll>
           <SectionTitle surtitre={surtitre} titre={titreSection} inverse={inverse} />
@@ -39,7 +39,7 @@ export default function SavoirFaireGrid({
                   zoomHover={Boolean(item.href)}
                 />
                 <h3
-                  className={`mt-6 font-serif text-2xl ${
+                  className={`mt-6 font-serif text-xl sm:text-2xl ${
                     inverse ? "text-ivoire" : "text-noir"
                   }`}
                 >

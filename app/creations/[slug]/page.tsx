@@ -45,7 +45,7 @@ export default async function CreationPage({
 
   return (
     <>
-      <div className="conteneur pt-28">
+      <div className="conteneur pt-20 sm:pt-24">
         <Link
           href="/creations"
           className="lien-souligne text-xs uppercase tracking-surtitre text-taupe-fonce"
@@ -57,14 +57,14 @@ export default async function CreationPage({
       <CreationDetail creation={creation} />
 
       {autres.length > 0 && (
-        <section className="border-t border-gris-chaud py-20 md:py-28">
+        <section className="border-t border-gris-chaud py-16 md:py-28">
           <div className="conteneur">
             <RevealOnScroll>
               <h2 className="font-serif text-2xl md:text-3xl">
                 À découvrir également
               </h2>
             </RevealOnScroll>
-            <div className="mt-12 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {autres.map((c, i) => (
                 <RevealOnScroll key={c.id} delai={i * 0.06}>
                   <CreationCard creation={c} />

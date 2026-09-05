@@ -13,7 +13,7 @@ export default function Temoignages() {
   return (
     <section
       aria-labelledby="titre-temoignages"
-      className="border-t border-gris-chaud py-28 md:py-36"
+      className="border-t border-gris-chaud py-20 md:py-36"
     >
       <div className="conteneur">
         <RevealOnScroll>
@@ -23,7 +23,7 @@ export default function Temoignages() {
           />
         </RevealOnScroll>
 
-        <ul className="mt-16 grid gap-14 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {temoignages.map((t, i) => (
             <li key={t.signature}>
               <RevealOnScroll delai={i * 0.08}>

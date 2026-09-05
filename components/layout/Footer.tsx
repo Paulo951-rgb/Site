@@ -8,7 +8,7 @@ import { siteConfig } from "@/content/siteConfig";
 export default function Footer() {
   return (
     <footer className="border-t border-gris-chaud bg-ivoire">
-      <div className="conteneur grid gap-12 py-20 md:grid-cols-3">
+      <div className="conteneur grid gap-8 py-16 md:gap-12 md:py-20 md:grid-cols-3">
         <div>
           <p className="font-serif text-2xl">{siteConfig.nom}</p>
           <p className="mt-1 text-xs uppercase tracking-surtitre text-taupe-fonce">
@@ -77,12 +77,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gris-chaud">
-        <div className="conteneur flex flex-col items-start justify-between gap-4 py-6 text-xs text-taupe-fonce md:flex-row md:items-center">
+        <div className="border-t border-gris-chaud">
+        <div className="conteneur flex flex-col items-start justify-between gap-2 py-5 text-xs text-taupe-fonce md:flex-row md:items-center md:gap-4 md:py-6">
           <p>
             © {new Date().getFullYear()} {siteConfig.nomComplet}
           </p>
-          <nav aria-label="Liens légaux" className="flex gap-6">
+          <nav aria-label="Liens légaux" className="flex gap-4 md:gap-6">
             {navigationSecondaire.map((lien) => (
               <Link key={lien.href} href={lien.href} className="lien-souligne">
                 {lien.label}

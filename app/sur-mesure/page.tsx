@@ -39,10 +39,10 @@ const etapes = [
 export default function SurMesurePage() {
   return (
     <>
-      <section className="conteneur pb-20 pt-40 md:pt-52">
+      <section className="conteneur pb-20 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Sur mesure</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Un soulier construit sur votre pied
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -64,18 +64,18 @@ export default function SurMesurePage() {
         <div className="conteneur">
           <RevealOnScroll>
             <p className="surtitre">Le déroulé</p>
-            <h2 className="mt-4 max-w-2xl font-serif text-3xl md:text-5xl">
+            <h2 className="mt-4 max-w-2xl font-serif text-2xl md:text-5xl">
               Quatre temps, un seul objectif : la juste mesure
             </h2>
           </RevealOnScroll>
-          <div className="mt-16 grid gap-12 md:grid-cols-2">
+            <div className="mt-16 grid gap-8 md:grid-cols-2">
             {etapes.map((etape, i) => (
               <RevealOnScroll key={etape.titre} delai={i * 0.08}>
                 <div className="border-t border-ivoire/15 pt-8">
-                  <p className="font-serif text-4xl text-metal">
+                   <p className="font-serif text-3xl text-metal">
                     {String(i + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-4 font-serif text-2xl">{etape.titre}</h3>
+                   <h3 className="mt-4 font-serif text-xl sm:text-2xl">{etape.titre}</h3>
                   <p className="mt-4 text-sm leading-relaxed text-gris-chaud">
                     {etape.texte}
                   </p>
@@ -86,7 +86,7 @@ export default function SurMesurePage() {
         </div>
       </section>
 
-      <section className="py-28 md:py-40">
+      <section className="py-20 md:py-40">
         <div className="conteneur grid items-center gap-14 lg:grid-cols-2">
           <RevealOnScroll>
             <ImagePanel
@@ -99,7 +99,7 @@ export default function SurMesurePage() {
           <div>
             <RevealOnScroll delai={0.1}>
               <p className="surtitre">À domicile</p>
-              <h2 className="mt-4 font-serif text-3xl md:text-4xl">
+              <h2 className="mt-4 font-serif text-2xl md:text-4xl">
                 L'atelier peut aussi venir à vous
               </h2>
               <p className="colonne-lecture mt-6 text-base text-noir/80">

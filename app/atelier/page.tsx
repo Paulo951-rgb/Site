@@ -19,10 +19,10 @@ export const metadata: Metadata = construireMetadata({
 export default function AtelierPage() {
   return (
     <>
-      <section className="conteneur pb-20 pt-40 md:pt-52">
+      <section className="conteneur pb-20 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">L'atelier</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             107 rue Blomet, Paris XVᵉ
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -33,7 +33,7 @@ export default function AtelierPage() {
         </RevealOnScroll>
       </section>
 
-      <section className="conteneur pb-28">
+      <section className="conteneur pb-20 md:pb-28">
         <RevealOnScroll>
           <ImagePanel
             src="/images/atelier/atelier-01.jpg"
@@ -45,8 +45,8 @@ export default function AtelierPage() {
         </RevealOnScroll>
       </section>
 
-      <section className="border-t border-gris-chaud py-28 md:py-36">
-        <div className="conteneur grid gap-14 lg:grid-cols-2">
+      <section className="border-t border-gris-chaud py-20 md:py-36">
+        <div className="conteneur grid gap-10 lg:grid-cols-2">
           <div>
             <RevealOnScroll>
               <SectionTitle
@@ -98,7 +98,7 @@ export default function AtelierPage() {
         </div>
       </section>
 
-      <section className="bg-noir py-28 text-ivoire md:py-36">
+      <section className="bg-noir py-20 text-ivoire md:py-36">
         <div className="conteneur grid items-center gap-14 lg:grid-cols-2">
           <RevealOnScroll>
             <SectionTitle

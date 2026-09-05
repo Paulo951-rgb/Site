@@ -8,7 +8,7 @@ export default function CreationsPreview() {
   const miseEnAvant = creations.filter((c) => c.featured).slice(0, 3);
 
   return (
-    <section className="py-28 md:py-40">
+    <section className="py-20 md:py-40">
       <div className="conteneur">
         <RevealOnScroll>
           <div className="flex flex-wrap items-end justify-between gap-6">

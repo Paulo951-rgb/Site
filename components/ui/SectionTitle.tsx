@@ -19,7 +19,7 @@ export default function SectionTitle({
         <p className={`surtitre ${inverse ? "text-taupe" : ""}`}>{surtitre}</p>
       )}
       <h2
-        className={`mt-4 font-serif text-3xl md:text-4xl lg:text-5xl ${
+        className={`mt-4 font-serif text-2xl md:text-3xl lg:text-4xl ${
           inverse ? "text-ivoire" : "text-noir"
         }`}
       >

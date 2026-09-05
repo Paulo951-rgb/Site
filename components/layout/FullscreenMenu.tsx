@@ -91,7 +91,7 @@ export default function FullscreenMenu({
                 <Link
                   href={lien.href}
                   onClick={onNavigate}
-                  className="block border-b border-ivoire/10 py-2 font-serif text-3xl transition-colors duration-300 hover:text-taupe md:py-3 md:text-5xl"
+                  className="block border-b border-ivoire/10 py-3 font-serif text-3xl transition-colors duration-300 hover:text-taupe md:py-4 md:text-5xl"
                 >
                   {lien.label}
                 </Link>

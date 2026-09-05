@@ -25,7 +25,7 @@ export default function Hero({
   const y = useTransform(scrollYProgress, [0, 1], ["0%", reduit ? "0%" : "12%"]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[92vh] items-end overflow-hidden bg-noir">
+    <section ref={ref} className="relative flex min-h-[70vh] items-end overflow-hidden bg-noir sm:min-h-[80vh] md:min-h-[92vh]">
       <motion.div style={{ y }} className="absolute inset-0">
         <Image
           src={image}
@@ -39,7 +39,7 @@ export default function Hero({
         <div className="absolute inset-0 bg-noir/55" />
       </motion.div>
 
-      <div className="conteneur relative z-10 pb-24 pt-40 text-ivoire md:pb-32">
+      <div className="conteneur relative z-10 pb-16 pt-16 text-ivoire sm:pt-20 md:pb-24 md:pt-28">
         <motion.p
           className="surtitre text-gris-chaud"
           initial={reduit ? false : { opacity: 0 }}
@@ -49,7 +49,7 @@ export default function Hero({
           {siteConfig.adresse.rue}, Paris XVᵉ
         </motion.p>
         <motion.h1
-          className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-6xl lg:text-7xl"
+          className="mt-4 max-w-3xl font-serif text-4xl font-light sm:text-5xl md:text-6xl lg:text-7xl"
           initial={reduit ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
@@ -58,7 +58,7 @@ export default function Hero({
         </motion.h1>
         {sousTitre && (
           <motion.p
-            className="colonne-lecture mt-8 text-lg text-gris-chaud"
+            className="colonne-lecture mt-6 text-base text-gris-chaud sm:text-lg"
             initial={reduit ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.55 }}
@@ -67,7 +67,7 @@ export default function Hero({
           </motion.p>
         )}
         <motion.div
-          className="mt-10 flex flex-wrap gap-4"
+          className="mt-8 flex flex-wrap gap-4"
           initial={reduit ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.75 }}

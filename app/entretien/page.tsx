@@ -15,10 +15,10 @@ export const metadata: Metadata = construireMetadata({
 export default function PageEntretien() {
   return (
     <>
-      <section className="conteneur pb-16 pt-40 md:pt-52">
+      <section className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Entretien &amp; seconde vie</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Faire durer ce qui a été fait pour durer
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -29,8 +29,8 @@ export default function PageEntretien() {
         </RevealOnScroll>
       </section>
 
-      <section className="conteneur pb-28">
-        <ol className="colonne-lecture space-y-20">
+      <section className="conteneur pb-20 md:pb-28">
+        <ol className="colonne-lecture space-y-16">
           {conseilsEntretien.map((conseil, i) => (
             <li key={conseil.titre}>
               <RevealOnScroll>

@@ -62,15 +62,15 @@ export default function Header() {
             : "bg-transparent"
         } ${surFondSombre ? "text-ivoire" : "text-noir"}`}
       >
-        <div className="conteneur flex h-20 items-center justify-between">
+        <div className="conteneur flex h-16 items-center justify-between sm:h-18 lg:h-20">
           <Link
             href="/"
-            className="font-serif text-lg tracking-large"
+            className="font-serif text-base tracking-large sm:text-lg"
             aria-label={`${siteConfig.nomComplet} — accueil`}
           >
             {siteConfig.nom}
             <span
-              className={`ml-2 hidden text-xs uppercase tracking-surtitre sm:inline ${
+              className={`ml-1 hidden text-[10px] uppercase tracking-surtitre sm:text-xs sm:ml-2 sm:inline ${
                 surFondSombre ? "text-taupe" : "text-taupe-fonce"
               }`}
             >

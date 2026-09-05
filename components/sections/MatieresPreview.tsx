@@ -7,7 +7,7 @@ import { ButtonLien } from "@/components/ui/Button";
 
 export default function MatieresPreview() {
   return (
-    <section className="bg-noir py-28 text-ivoire md:py-40">
+    <section className="bg-noir py-20 text-ivoire md:py-40">
       <div className="conteneur">
         <RevealOnScroll>
           <SectionTitle

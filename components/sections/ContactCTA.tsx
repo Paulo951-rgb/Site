@@ -10,7 +10,7 @@ export default function ContactCTA({
   texte?: string;
 }) {
   return (
-    <section className="border-t border-gris-chaud bg-gris-chaud/40 py-28 md:py-36">
+    <section className="border-t border-gris-chaud bg-gris-chaud/40 py-20 md:py-36">
       <div className="conteneur max-w-3xl text-center md:mx-auto">
         <RevealOnScroll>
           <p className="surtitre">Rendez-vous</p>

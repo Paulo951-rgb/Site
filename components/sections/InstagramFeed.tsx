@@ -17,7 +17,7 @@ export default function InstagramFeed() {
   ];
 
   return (
-    <section className="py-28 md:py-36">
+    <section className="py-20 md:py-36">
       <div className="conteneur">
         <RevealOnScroll>
           <SectionTitle surtitre="Carnet d'atelier" titre="La vie de l'atelier, en images">

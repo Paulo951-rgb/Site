@@ -109,8 +109,8 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={soumettre} noValidate className="space-y-8">
-      <div className="grid gap-8 sm:grid-cols-2">
+    <form onSubmit={soumettre} noValidate className="space-y-6 sm:space-y-8">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
         <div>
           <label htmlFor="nom" className={champLabel}>
             Nom
@@ -153,7 +153,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
         <div>
           <label htmlFor="telephone" className={champLabel}>
             Téléphone <span className="normal-case tracking-normal">(facultatif)</span>

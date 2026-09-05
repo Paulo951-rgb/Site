@@ -27,10 +27,10 @@ const ordreCategories: CreationCategorie[] = [
 export default function CreationsPage() {
   return (
     <>
-      <section className="conteneur pb-16 pt-40 md:pt-52">
+      <section className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">Créations</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Pièces uniques & créations d'atelier
           </h1>
           <p className="colonne-lecture mt-8 text-lg text-noir/80">
@@ -56,7 +56,7 @@ export default function CreationsPage() {
                   {categoriesLabels[categorie]}
                 </h2>
               </RevealOnScroll>
-              <div className="mt-12 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {liste.map((creation, i) => (
                   <RevealOnScroll key={creation.id} delai={i * 0.06}>
                     <CreationCard creation={creation} />

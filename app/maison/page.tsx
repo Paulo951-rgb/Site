@@ -16,10 +16,10 @@ export const metadata: Metadata = construireMetadata({
 export default function MaisonPage() {
   return (
     <>
-      <section className="conteneur pb-10 pt-40 md:pt-52">
+      <section className="conteneur pb-10 pt-24 sm:pt-32 md:pt-52">
         <RevealOnScroll>
           <p className="surtitre">La maison</p>
-          <h1 className="mt-6 max-w-4xl font-serif text-5xl font-light md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light sm:text-5xl md:text-7xl">
             Une maison de cuir, entre reliure et botterie
           </h1>
         </RevealOnScroll>
@@ -35,8 +35,8 @@ export default function MaisonPage() {
         ]}
       />
 
-      <section className="bg-noir py-28 text-ivoire md:py-40">
-        <div className="conteneur grid gap-14 lg:grid-cols-2 lg:items-center">
+      <section className="bg-noir py-20 text-ivoire md:py-40">
+        <div className="conteneur grid gap-10 lg:grid-cols-2 lg:items-center">
           <RevealOnScroll>
             <ImagePanel
               src="/images/portraits/atelier-portrait.jpg"

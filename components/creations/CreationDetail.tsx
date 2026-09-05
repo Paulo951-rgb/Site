@@ -87,7 +87,7 @@ export default function CreationDetail({ creation }: { creation: Creation }) {
         </div>
       )}
 
-      <div className="conteneur mt-20 pb-28">
+      <div className="conteneur mt-20 pb-20 md:pb-28">
         <CreationGallery images={creation.images} nom={creation.nom} />
       </div>
     </article>

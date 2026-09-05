@@ -66,13 +66,13 @@ export default async function PageArticle({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <article>
-        <header className="conteneur pb-16 pt-40 md:pt-52">
+        <header className="conteneur pb-16 pt-24 sm:pt-32 md:pt-52">
           <RevealOnScroll>
             <p className="surtitre">
               Journal ·{" "}
               <time dateTime={article.date}>{formaterDate(article.date)}</time>
             </p>
-            <h1 className="mt-6 max-w-4xl font-serif text-4xl font-light md:text-6xl">
+            <h1 className="mt-6 max-w-4xl font-serif text-3xl font-light sm:text-4xl md:text-6xl">
               {article.titre}
             </h1>
             <p className="colonne-lecture mt-8 text-lg text-noir/80">

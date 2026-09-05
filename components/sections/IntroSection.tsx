@@ -10,7 +10,7 @@ export default function IntroSection({
   texte: string[];
 }) {
   return (
-    <section className="py-28 md:py-40">
+    <section className="py-20 md:py-40">
       <div className="conteneur grid gap-10 md:grid-cols-12">
         <div className="md:col-span-3">
           <RevealOnScroll>
@@ -19,7 +19,7 @@ export default function IntroSection({
         </div>
         <div className="md:col-span-8 md:col-start-5">
           <RevealOnScroll delai={0.1}>
-            <h2 className="font-serif text-3xl leading-snug md:text-4xl">
+            <h2 className="font-serif text-2xl leading-snug md:text-3xl">
               {titre}
             </h2>
           </RevealOnScroll>
